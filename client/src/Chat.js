@@ -1,12 +1,14 @@
 import React from 'react';
+import {
+	Panel, Form, FormControl, ListGroup, ListGroupItem, Button} from 'react-bootstrap';
 
 class Chat extends React.Component {
 	render() {
 		return (
-			<div>
-				<MessageList messages={MESSAGES}/>
+			<Panel>
+				<MessageList messages={this.props.messages}/>
 				<MessageInput/>
-			</div>
+			</Panel>
 		);
 	}
 }
@@ -14,39 +16,28 @@ class Chat extends React.Component {
 class MessageList extends React.Component {
 	render() {
 		const listItems = this.props.messages.map((message) =>
-			<li key={message._id}>
+			<ListGroupItem key={message._id}>
 				{message.text}
-			</li>
+			</ListGroupItem>
 		);
 		return <div>
-			<ul>
+			<ListGroup>
 				{listItems}
-			</ul>
+			</ListGroup>
 		</div>;
 	}
 }
 
 class MessageInput extends React.Component {
 	render() {
-		return <div>
-			<form>
-				<input type='text' placeholder="Send Message"/>
-				<button type='button'>Send</button>
-			</form>
-		</div>;
+		return <Panel>
+			<Form >
+				<FormControl type='text' placeholder="What's on your mind?"/>
+				<Button type='submit'>Send</Button>
+			</Form>
+		</Panel>;
 	}
 }
-
-let MESSAGES = [
-	{
-		'text': 'Hello Feathers',
-		'_id': 'Vh5PpIinPWcq1Cp1'
-	},
-	{
-		'text': 'Hello Burdy!',
-		'_id': 'Vh5PpIinPWcq1Cp2'
-	}
-];
 
 
 
