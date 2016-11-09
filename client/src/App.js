@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import Chat from './Chat';
 import NavBar from './NavBar';
-import { Grid,Row,Col,Panel} from 'react-bootstrap';
+import { Grid,Row,Col} from 'react-bootstrap';
 
 let MESSAGES = [
 	{
 		'text': 'Hello Feathers',
 		'_id': 'Vh5PpIinPWcq1Cp1'
-	}, {
-		'text': 'Hello Burdy!',
-		'_id': 'Vh5PpIinPWcq1Cp2'
 	}
 ];
 
@@ -19,7 +16,7 @@ class App extends Component {
 			<div>
 					<NavBar/>
 					<Grid>
-					<Row className="show-grid">
+					<Row className="show-grid" style={{'min-height':'500px'}}>
 						<Col xs={1} sm={2} md={2} lg={3}>
 
 						</Col>

@@ -1,14 +1,23 @@
 import React from 'react';
 import {
-	Panel, Form, FormControl, ListGroup, ListGroupItem, Button} from 'react-bootstrap';
+	Panel,
+	Form,
+	FormControl,
+	ListGroup,
+	ListGroupItem,
+	Button
+} from 'react-bootstrap';
 
 class Chat extends React.Component {
 	render() {
 		return (
-			<Panel>
+			<div>
+			<Panel style={{'min-height':'40vh'}}>
 				<MessageList messages={this.props.messages}/>
-				<MessageInput/>
 			</Panel>
+
+				<MessageInput/>
+		</div>
 		);
 	}
 }
@@ -16,12 +25,12 @@ class Chat extends React.Component {
 class MessageList extends React.Component {
 	render() {
 		const listItems = this.props.messages.map((message) =>
-			<ListGroupItem key={message._id}>
+			<ListGroupItem style={{border: 0}} key={message._id}>
 				{message.text}
 			</ListGroupItem>
 		);
 		return <div>
-			<ListGroup>
+			<ListGroup >
 				{listItems}
 			</ListGroup>
 		</div>;
@@ -32,8 +41,8 @@ class MessageInput extends React.Component {
 	render() {
 		return <Panel>
 			<Form >
-				<FormControl type='text' placeholder="What's on your mind?"/>
-				<Button type='submit'>Send</Button>
+							<FormControl type='text' placeholder='Write a message '/>
+							<Button className="pull-right" type='submit'>Send</Button>
 			</Form>
 		</Panel>;
 	}
