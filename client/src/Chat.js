@@ -8,12 +8,24 @@ import {
 	Button
 } from 'react-bootstrap';
 
+let MESSAGES = [
+	{
+		'text': 'Hello Feathers',
+		'_id': 'Vh5PpIinPWcq1Cp1'
+	}
+];
+
+const title = (
+	<h3>Chat</h3>
+);
+
+
 class Chat extends React.Component {
 	render() {
 		return (
 			<div>
-			<Panel style={{'min-height':'40vh'}}>
-				<MessageList messages={this.props.messages}/>
+			<Panel header={title} style={{height: 40 +'vh'}}>
+				<MessageList messages={MESSAGES}/>
 			</Panel>
 
 				<MessageInput/>

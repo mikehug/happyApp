@@ -5,6 +5,7 @@ import {
 	Navbar,
 	NavItem
 } from 'react-bootstrap';
+import { LinkContainer, IndexLinkContainer } from 'react-router-bootstrap';
 
 class NavBar extends React.Component {
 
@@ -12,20 +13,26 @@ class NavBar extends React.Component {
 		return (
 			<Navbar collapseOnSelect>
 				<Navbar.Header>
-					<Navbar.Brand>
-						<img alt='Happy Techie Logo' src={logo}/>
-					</Navbar.Brand>
+						<a href="/">
+							<Navbar.Brand>
+								<img alt='Happy Techie Logo' src={logo}/>
+							</Navbar.Brand>
+						</a>
 					<Navbar.Toggle/>
 				</Navbar.Header>
 				<Navbar.Collapse>
 				<Nav>
-					<NavItem eventKey={1} href="#">Chat</NavItem>
-					<NavItem eventKey={2} href="#">Learn</NavItem>
+					<LinkContainer to="/chat">
+						<NavItem eventKey={1}>Chat</NavItem>
+					</LinkContainer>
+						<NavItem eventKey={2} href="#">Learn</NavItem>
 				</Nav>
 
 					<Nav pullRight>
 						<NavItem eventKey={1} href="#">Profile</NavItem>
-						<NavItem eventKey={2} href="#">Logout</NavItem>
+							<LinkContainer to="/SignIn">
+								<NavItem eventKey={2}>Sign In</NavItem>
+							</LinkContainer>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
