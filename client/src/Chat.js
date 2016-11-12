@@ -7,29 +7,55 @@ import {
 	ListGroupItem,
 	Button
 } from 'react-bootstrap';
-
-let MESSAGES = [
-	{
-		'text': 'Hello Feathers',
-		'_id': 'Vh5PpIinPWcq1Cp1'
-	}
-];
+import Feathers from 'feathers/client';
+import Socketio from 'feathers-socketio/client';
+import Hooks from 'feathers-hooks';
+import IO from 'socket.io-client';
 
 const title = (
 	<h3>Chat</h3>
 );
 
-
 class Chat extends React.Component {
+	constructor() {
+		super();
+		
+		this.state = {
+			messages: []
+		};
+	}
+	
+	
+	componentDidMount() {
+		
+		const socket = IO('http://localhost:3030');
+		const app = Feathers()
+			.configure(Hooks())
+			.configure(Socketio(socket));
+		const messageService = app.service('messages');
+		
+		messageService.find({
+			query: {
+				$sort: { createdAt: -1 },
+				$limit: this.props.limit || 10
+			}
+		}).then(page => this.setState({messages: page.data}));
+			
+		console.log(this.state.messages);
+		
+		messageService.on('created', message => 
+			this.setState({messages: this.state.messages.concat(message)}));
+	
+	}
+	
 	render() {
 		return (
 			<div>
-			<Panel header={title} style={{height: 40 +'vh'}}>
-				<MessageList messages={MESSAGES}/>
-			</Panel>
-
+				<Panel header={title} >
+					<MessageList messages={this.state.messages}/>
+				</Panel>
 				<MessageInput/>
-		</div>
+			</div>
 		);
 	}
 }
@@ -59,8 +85,5 @@ class MessageInput extends React.Component {
 		</Panel>;
 	}
 }
-
-
-
 
 export default Chat;

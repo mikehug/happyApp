@@ -22,7 +22,7 @@ class SignIn extends React.Component {
 						<FormControl type='password' placeholder='********'/>
 
 					</FormGroup>
-          <a href='/signup'>New? Click to Sign Up</a>
+					<a href='/signup'>Not a member? Sign Up</a>
 					<Button className="pull-right" type='submit'>Sign In</Button>
 
 				</form>

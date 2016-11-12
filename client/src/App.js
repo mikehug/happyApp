@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import NavBar from './NavBar';
 import { Grid,Row,Col} from 'react-bootstrap';
 
-
 class App extends Component {
+	
 	render() {
 		return (
 			<div>
