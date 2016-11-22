@@ -8,12 +8,10 @@ import {
 	Button
 } 
 	from 'react-bootstrap';
-import Feathers from 'feathers/client';
-import Socketio from 'feathers-socketio/client';
-import Hooks from 'feathers-hooks';
-import IO from 'socket.io-client';
+import App from './AppServices';
 
 let messageService = null;
+let apiService = null;
 
 class Chat extends React.Component {
 	constructor(props) {
@@ -23,17 +21,10 @@ class Chat extends React.Component {
 			messages: []
 		};
 	}
- 
-	static getMessageService(){
-		const socket = IO('http://localhost:3030');
-		const app = Feathers()
-			.configure(Hooks())
-			.configure(Socketio(socket));
-		 return app.service('messages');
-	}
 	
 	componentDidMount() {		
-		messageService = Chat.getMessageService(); 
+		messageService = App.service('messages');
+		apiService = App.service('aiapis');
 		messageService.find({
 			query: {
 				$sort: { createdAt: -1 },
@@ -105,9 +96,14 @@ class MessageInput extends React.Component {
 	
 	handleSubmit(event){
 		event.preventDefault();
+		let data = {
+			query: {message: this.state.text}
+		};
 		messageService.create({
 			text: this.state.text
-		}).then(() => this.setState({text:''}));		
+		}).then(() => this.setState({text:''}));
+		apiService.get(1, data).then(res => console.log(res.action+' in '+res.parameters.city));		
+		
 	}
 	
 	render() {
