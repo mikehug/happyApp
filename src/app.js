@@ -13,6 +13,7 @@ const bodyParser = require('body-parser');
 const socketio = require('feathers-socketio');
 const middleware = require('./middleware');
 const services = require('./services');
+const authentication = require('feathers-authentication');
 
 const app = feathers();
 
@@ -29,6 +30,7 @@ app.use(compress())
 	.configure(rest())
 	.configure(socketio())
 	.configure(services)
-	.configure(middleware);
+	.configure(middleware)
+	.configure(authentication());
 
 module.exports = app;

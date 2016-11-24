@@ -1,25 +1,60 @@
 import React from 'react';
 import { Panel, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import App from './AppServices';
+import { browserHistory } from 'react-router'
 
 class SignIn extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			email: '',
+			password: ''
+		};
+		this.handleOnEmailChange = this.handleOnEmailChange.bind(this);
+		this.handleOnPasswordChange = this.handleOnPasswordChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		
+	}
+	
+	componentDidMount() {
+		//TODO Need to handle authentication error/promise return
+		App.authenticate();
+	}
+	
+	handleOnEmailChange(event){
+		this.setState({email: event.target.value});
+	}
+	
+	handleOnPasswordChange(event){
+		this.setState({password: event.target.value});
+	}
+	
+	handleSubmit(event){
+		event.preventDefault();
+		App.authenticate({
+			type: 'local',
+			'email': this.state.email,
+			'password': this.state.password
+		}).then(browserHistory.push('/chat')).catch(error => {
+			console.error('Error authenticating', error);
+		});
+	
+	
+	}
 
 	render() {
 
-		const title = (
-			<h3>Sign In</h3>
-		);
-
-
+		const title = (<h3>Sign In</h3>);
 		return (
 			<Panel header={title}>
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<FormGroup controlId='name'>
 
 						<ControlLabel>Email</ControlLabel>
-						<FormControl type='text'	placeholder='your@email.com'/>
+						<FormControl type='text' onChange={this.handleOnEmailChange}	placeholder='your@email.com'/>
 
 						<ControlLabel>Password</ControlLabel>
-						<FormControl type='password' placeholder='********'/>
+						<FormControl type='password' onChange={this.handleOnPasswordChange} placeholder='********'/>
 
 					</FormGroup>
 					<a href='/signup'>Not a member? Sign Up</a>

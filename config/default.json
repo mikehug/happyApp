@@ -21,6 +21,7 @@
 			"permissions": {
 				"scope": ["profile"]
 			}
-		}
+		},
+		"successRedirect": "/chat"
 	}
 }

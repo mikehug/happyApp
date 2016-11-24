@@ -11,8 +11,7 @@ import {
 import App from './AppServices';
 
 let messageService = null;
-let apiService = null;
-
+//TODO Handle authentication denial and redirect
 class Chat extends React.Component {
 	constructor(props) {
 		super(props);
@@ -24,7 +23,6 @@ class Chat extends React.Component {
 	
 	componentDidMount() {		
 		messageService = App.service('messages');
-		apiService = App.service('aiapis');
 		messageService.find({
 			query: {
 				$sort: { createdAt: -1 },
@@ -96,14 +94,11 @@ class MessageInput extends React.Component {
 	
 	handleSubmit(event){
 		event.preventDefault();
-		let data = {
-			query: {message: this.state.text}
-		};
+		
 		messageService.create({
 			text: this.state.text
 		}).then(() => this.setState({text:''}));
-		apiService.get(1, data).then(res => console.log(res.action+' in '+res.parameters.city));		
-		
+	
 	}
 	
 	render() {

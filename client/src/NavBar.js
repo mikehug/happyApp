@@ -6,8 +6,14 @@ import {
 	NavItem
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import App from './AppServices.js';
+import {browserHistory} from 'react-router';
 
 class NavBar extends React.Component {
+	
+	logout(){
+		App.logout().then(()=> browserHistory.push('/signin'));
+	}
 
 	render() {
 		return (

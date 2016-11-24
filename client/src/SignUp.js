@@ -3,23 +3,21 @@ import { Panel, FormGroup, FormControl, ControlLabel, Button } from 'react-boots
 
 class SignUp extends React.Component {
 
+	//TODO Validation on password length/security and confirmation. Server side also needed 
+	//with email confirmation probably a good idea too. Is post the best way to handle this?
 	render() {
-
-		const title = (
-			<h3>Sign Up</h3>
-		);
-
-
+		const title = (<h3>Sign Up</h3>);
+			
 		return (
 			<Panel header={title}>
-				<form>
+				<form method='post' action="signup">
 					<FormGroup controlId='name'>
 
 						<ControlLabel>Email</ControlLabel>
-						<FormControl type='text'	placeholder='your@email.com'/>
+						<FormControl type='text' name='email'	placeholder='your@email.com'/>
 
 						<ControlLabel>Password</ControlLabel>
-						<FormControl type='password' placeholder='********'/>
+						<FormControl type='password' name='password' placeholder='********'/>
 
 						<ControlLabel>Confirm Password</ControlLabel>
 						<FormControl type='password' placeholder='********'/>
