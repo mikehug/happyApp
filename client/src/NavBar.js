@@ -11,8 +11,40 @@ import {browserHistory} from 'react-router';
 
 class NavBar extends React.Component {
 	
+	
 	logout(){
 		App.logout().then(()=> browserHistory.push('/signin'));
+	}
+	
+	isAuthenticated(){
+		const { user } = this.props;
+		
+		if(user.isAuthenticated) {
+			return <Navbar.Collapse>
+							<Nav>
+								<LinkContainer to="/chat">
+									<NavItem eventKey={1}>Chat</NavItem>
+								</LinkContainer>
+									<NavItem eventKey={2} href="#">Learn</NavItem>
+							</Nav>	
+							<Nav pullRight>
+								<NavItem eventKey={1} href="#">{user.name}</NavItem>
+									<LinkContainer to="/SignIn">
+										<NavItem eventKey={2}>Sign Out</NavItem>
+									</LinkContainer>
+							</Nav>
+						</Navbar.Collapse>;
+		}
+		else { 
+			return	<Navbar.Collapse>
+								<Nav pullRight>
+									<NavItem eventKey={1} href="#">{user.name}</NavItem>
+										<LinkContainer to="/SignIn">
+											<NavItem eventKey={2}>Sign In</NavItem>
+										</LinkContainer>
+								</Nav>
+							</Navbar.Collapse>;
+		}
 	}
 
 	render() {
@@ -26,21 +58,7 @@ class NavBar extends React.Component {
 						</a>
 					<Navbar.Toggle/>
 				</Navbar.Header>
-				<Navbar.Collapse>
-				<Nav>
-					<LinkContainer to="/chat">
-						<NavItem eventKey={1}>Chat</NavItem>
-					</LinkContainer>
-						<NavItem eventKey={2} href="#">Learn</NavItem>
-				</Nav>
-
-					<Nav pullRight>
-						<NavItem eventKey={1} href="#">Profile</NavItem>
-							<LinkContainer to="/SignIn">
-								<NavItem eventKey={2}>Sign In</NavItem>
-							</LinkContainer>
-					</Nav>
-				</Navbar.Collapse>
+				{this.isAuthenticated()}
 			</Navbar>
 		);
 	}

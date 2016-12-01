@@ -1,7 +1,7 @@
 import React from 'react';
 import { Panel, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import App from './AppServices';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 
 class SignIn extends React.Component {
 	constructor(props) {

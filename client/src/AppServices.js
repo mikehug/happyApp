@@ -1,14 +1,14 @@
-import Feathers from 'feathers/client';
-import Socketio from 'feathers-socketio/client';
-import Hooks from 'feathers-hooks';
-import IO from 'socket.io-client';
-import Authentication from 'feathers-authentication/client';
+import feathers from 'feathers/client';
+import socketio from 'feathers-socketio/client';
+import hooks from 'feathers-hooks';
+import io from 'socket.io-client';
+import authentication from 'feathers-authentication/client';
 
-const socket = IO('http://localhost:3030');
-const app = Feathers()
-		.configure(Hooks())
-		.configure(Socketio(socket))
-		.configure(Authentication({
+const socket = io('http://localhost:3030');
+const app = feathers()
+		.configure(hooks())
+		.configure(socketio(socket))
+		.configure(authentication({
 			storage: window.localStorage
 		}));
 

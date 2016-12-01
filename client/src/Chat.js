@@ -9,19 +9,35 @@ import {
 } 
 	from 'react-bootstrap';
 import App from './AppServices';
+import {browserHistory} from 'react-router';
 
 let messageService = null;
+
 //TODO Handle authentication denial and redirect
 class Chat extends React.Component {
 	constructor(props) {
 		super(props);
-		
 		this.state = {
 			messages: []
 		};
+		
 	}
 	
-	componentDidMount() {		
+	componentWillMount() {		
+		
+		App.authenticate().then(() =>{
+			this.props.authChange(true,'mike');
+		}).catch(error => {
+			if(error.code===401){
+				//this.props.authChange(false,'howdy');
+				browserHistory.push('/signin');
+			}
+			console.error(error);
+		});
+	}
+			
+	
+	componentDidMount() {	
 		messageService = App.service('messages');
 		messageService.find({
 			query: {
@@ -34,6 +50,7 @@ class Chat extends React.Component {
 			this.setState({messages: this.state.messages.concat(message)}));
 	
 	}
+	
 	
 	render() {
 		return (
