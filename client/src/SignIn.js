@@ -16,11 +16,6 @@ class SignIn extends React.Component {
 		
 	}
 	
-	componentDidMount() {
-		//TODO Need to handle authentication error/promise return
-		App.authenticate();
-	}
-	
 	handleOnEmailChange(event){
 		this.setState({email: event.target.value});
 	}
@@ -35,15 +30,18 @@ class SignIn extends React.Component {
 			type: 'local',
 			'email': this.state.email,
 			'password': this.state.password
-		}).then(browserHistory.push('/chat')).catch(error => {
+		})
+		.then(result => { 
+			browserHistory.push('/chat');
+		})
+		.catch(error => {
 			console.error('Error authenticating', error);
 		});
-	
-	
 	}
+	//TODO: Handle redirect or message if already signed in
 
 	render() {
-
+		
 		const title = (<h3>Sign In</h3>);
 		return (
 			<Panel header={title}>

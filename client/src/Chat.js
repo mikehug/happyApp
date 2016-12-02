@@ -13,44 +13,33 @@ import {browserHistory} from 'react-router';
 
 let messageService = null;
 
-//TODO Handle authentication denial and redirect
 class Chat extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			messages: []
-		};
-		
-	}
-	
-	componentWillMount() {		
-		
-		App.authenticate().then(() =>{
-			this.props.authChange(true,'mike');
-		}).catch(error => {
-			if(error.code===401){
-				//this.props.authChange(false,'howdy');
-				browserHistory.push('/signin');
-			}
-			console.error(error);
-		});
-	}
-			
+		};	
+	}	
 	
 	componentDidMount() {	
-		messageService = App.service('messages');
-		messageService.find({
-			query: {
-				$sort: { createdAt: -1 },
-				$limit: this.props.limit || 18
-			}
-		}).then(page => this.setState({messages: page.data}));
-					
-		messageService.on('created', message => 
-			this.setState({messages: this.state.messages.concat(message)}));
-	
-	}
-	
+		let user = App.get('user');
+		if(user){
+			messageService = App.service('messages');
+			messageService.find({
+				query: {
+					user_id: user._id,
+					$sort: { createdAt: -1 },
+					$limit: this.props.limit || 18
+				}
+			}).then(page => this.setState({messages: page.data}));
+						
+			messageService.on('created', message => 
+				this.setState({messages: this.state.messages.concat(message)}));	
+		}
+		else {
+			browserHistory.push('/signin');
+		}
+	}	
 	
 	render() {
 		return (
@@ -98,6 +87,7 @@ class MessageList extends React.Component {
 class MessageInput extends React.Component {
 	constructor(props){
 		super(props);
+		//let user = App.get('user');
 		this.state = {
 			text: ''
 		};
@@ -111,9 +101,10 @@ class MessageInput extends React.Component {
 	
 	handleSubmit(event){
 		event.preventDefault();
-		
+		let user = App.get('user');
 		messageService.create({
-			text: this.state.text
+			text: this.state.text,
+			user_id: user._id
 		}).then(() => this.setState({text:''}));
 	
 	}

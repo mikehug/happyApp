@@ -11,15 +11,8 @@ import {browserHistory} from 'react-router';
 
 class NavBar extends React.Component {
 	
-	
-	logout(){
-		App.logout().then(()=> browserHistory.push('/signin'));
-	}
-	
-	isAuthenticated(){
-		const { user } = this.props;
-		
-		if(user.isAuthenticated) {
+	displayNavLinks(){
+		if(App.get('user')) {
 			return <Navbar.Collapse>
 							<Nav>
 								<LinkContainer to="/chat">
@@ -28,9 +21,8 @@ class NavBar extends React.Component {
 									<NavItem eventKey={2} href="#">Learn</NavItem>
 							</Nav>	
 							<Nav pullRight>
-								<NavItem eventKey={1} href="#">{user.name}</NavItem>
-									<LinkContainer to="/SignIn">
-										<NavItem eventKey={2}>Sign Out</NavItem>
+									<LinkContainer  to="/SignIn">
+										<NavItem onClick={this.signOut} eventKey={2}>Sign Out</NavItem>
 									</LinkContainer>
 							</Nav>
 						</Navbar.Collapse>;
@@ -38,7 +30,6 @@ class NavBar extends React.Component {
 		else { 
 			return	<Navbar.Collapse>
 								<Nav pullRight>
-									<NavItem eventKey={1} href="#">{user.name}</NavItem>
 										<LinkContainer to="/SignIn">
 											<NavItem eventKey={2}>Sign In</NavItem>
 										</LinkContainer>
@@ -46,7 +37,11 @@ class NavBar extends React.Component {
 							</Navbar.Collapse>;
 		}
 	}
-
+	
+	signOut(){
+		App.logout().then(()=> browserHistory.push('/signin'));
+	}
+	
 	render() {
 		return (
 			<Navbar collapseOnSelect>
@@ -58,7 +53,7 @@ class NavBar extends React.Component {
 						</a>
 					<Navbar.Toggle/>
 				</Navbar.Header>
-				{this.isAuthenticated()}
+				{this.displayNavLinks()}
 			</Navbar>
 		);
 	}
