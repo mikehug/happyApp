@@ -39,6 +39,7 @@ class SignIn extends React.Component {
 		});
 	}
 	//TODO: Handle redirect or message if already signed in
+	// error handling and display
 
 	render() {
 		

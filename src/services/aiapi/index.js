@@ -21,25 +21,6 @@ class Service {
 	}
 	
 	get(id, params) {
-		let text = params.query.message;
-		console.log(text);	
-		return  new Promise((resolve, reject) => {
-			
-			const clientToken = 'ce510917e39b4358a396a0694a19b101';
-			const ai = apiai(clientToken);
-			let request = ai.textRequest(text, {sessionId: id});
-			request.on('response', function(response) {
-				console.log(response.result);
-				resolve(response.result);
-			});
-			
-			request.on('error', function(error) {
-				console.log(error);
-				reject(error);
-			});
-			request.end();	
-		})
-		
 		
 		// return Promise.resolve({
 		// 	id, text: `A new with ID: ${id}!`
@@ -61,8 +42,25 @@ class Service {
 		if(Array.isArray(data)) {
 			return Promise.all(data.map(current => this.create(current)));
 		}
-	
-		return Promise.resolve(data);
+		console.log(data);	
+		let text = data.text;
+		let id = data.userId;
+
+		return  new Promise((resolve, reject) => {
+			const clientToken = 'ce510917e39b4358a396a0694a19b101';
+			const ai = apiai(clientToken);
+			let request = ai.textRequest(text, {sessionId: id});
+			request.on('response', function(response) {
+				console.log(response.result);
+				resolve(response.result);
+			});
+			
+			request.on('error', function(error) {
+				console.log(error);
+				reject(error);
+			});
+			request.end();	
+		})
 	}
 	
 	update(id, data, params) {

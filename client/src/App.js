@@ -12,15 +12,13 @@ class App extends Component {
 					<NavBar user={this.state}/>
 					<Grid>
 					<Row>
-						<Col xs={1} sm={2} md={2} lg={3}>
-
-						</Col>
+						<Col xs={1} sm={2} md={2} lg={3}></Col>
+						
 						<Col xs={10} sm={8} md={8} lg={6}>
 							{this.props.children}
 						</Col>
-						<Col xsHidden sm={2} md={2} lg={3}>
-
-						</Col>
+						
+						<Col xsHidden sm={2} md={2} lg={3}></Col>
 					</Row>
 				</Grid>
 			</div>

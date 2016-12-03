@@ -12,6 +12,8 @@ import App from './AppServices';
 import {browserHistory} from 'react-router';
 
 let messageService = null;
+let aiService = null;
+
 
 class Chat extends React.Component {
 	constructor(props) {
@@ -24,12 +26,13 @@ class Chat extends React.Component {
 	componentDidMount() {	
 		let user = App.get('user');
 		if(user){
+			aiService = App.service('aiapis');
 			messageService = App.service('messages');
 			messageService.find({
 				query: {
-					user_id: user._id,
-					$sort: { createdAt: -1 },
-					$limit: this.props.limit || 18
+					userId: user._id,
+					$sort: { createdAt: 1 },
+					$limit: this.props.limit || 10
 				}
 			}).then(page => this.setState({messages: page.data}));
 						
@@ -102,11 +105,24 @@ class MessageInput extends React.Component {
 	handleSubmit(event){
 		event.preventDefault();
 		let user = App.get('user');
+		let text = this.state.text;
 		messageService.create({
-			text: this.state.text,
-			user_id: user._id
+			text: text
 		}).then(() => this.setState({text:''}));
+		this.aiChat(user, text);
+	}
 	
+	aiChat(user, text){
+		aiService.create({
+			text: text,
+			userId: user._id
+		})
+		.then((result) => {
+			messageService.create({
+				text: ' '+result.fulfillment.speech
+			});
+		console.log(result)
+		});
 	}
 	
 	render() {

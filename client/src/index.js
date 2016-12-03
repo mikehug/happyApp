@@ -18,7 +18,6 @@ ReactDOM.render(
 			<Route path="/chat" component={Chat}/>
 			<Route path="/signup" component={SignUp}/>
 			<Route path="/signin" component={SignIn}/>
-			<Route path="/auth/failure" component={SignIn}/>
 		</Route>
 	</Router>
 	, document.getElementById('root')

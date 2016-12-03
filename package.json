@@ -23,6 +23,7 @@
     "mocha": "mocha test/ --recursive"
   },
   "dependencies": {
+    "apiai": "^3.0.3",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "cors": "^2.8.1",
