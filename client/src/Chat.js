@@ -9,7 +9,7 @@ import {
 } 
 	from 'react-bootstrap';
 import App from './AppServices';
-import {browserHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 
 let messageService = null;
 let aiService = null;
@@ -40,7 +40,7 @@ class Chat extends React.Component {
 				this.setState({messages: this.state.messages.concat(message)}));	
 		}
 		else {
-			browserHistory.push('/signin');
+			hashHistory.push('/signin');
 		}
 	}	
 	
@@ -119,7 +119,8 @@ class MessageInput extends React.Component {
 		})
 		.then((result) => {
 			messageService.create({
-				text: ' '+result.fulfillment.speech
+				text: result.fulfillment.speech,
+				ai: true
 			});
 		console.log(result)
 		});

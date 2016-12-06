@@ -7,11 +7,11 @@ import SignIn from './SignIn';
 import Dashboard from './Dashboard';
 import 'bootstrap/dist/css/bootstrap.css';
 import './bootstrap-paper.css';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 
 ReactDOM.render(
-	<Router history={browserHistory}>
+	<Router history={hashHistory}>
 		<Route path="/" component={App}>
 			{/* add childern of app here*/}
 			<IndexRoute component={Dashboard}/>
