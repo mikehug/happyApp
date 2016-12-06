@@ -1,9 +1,5 @@
 version: 0.1
 
-environment_variables:
-	plaintext:
-		NODE_ENV: "production"
-
 phases:
 	install:
 		commands:
