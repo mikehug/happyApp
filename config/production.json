@@ -1,6 +1,6 @@
 {
 	"host": "happyapp2-dev.eu-west-1.elasticbeanstalk.com",
-	"port": "PORT",
+	"port": "8081",
 	"nedb": "../data/",
 	"public": "../client/build/",
 	"auth": {
