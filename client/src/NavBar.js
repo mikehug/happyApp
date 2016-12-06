@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import App from './AppServices.js';
-import {browserHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 
 class NavBar extends React.Component {
 	
@@ -39,7 +39,7 @@ class NavBar extends React.Component {
 	}
 	
 	signOut(){
-		App.logout().then(()=> browserHistory.push('/signin'));
+		App.logout().then(()=> hashHistory.push('/signin'));
 	}
 	
 	render() {
