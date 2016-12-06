@@ -19,7 +19,8 @@
 		"test": "npm run jshint && npm run mocha",
 		"jshint": "jshint src/. test/. --config",
 		"dev": "nf start -p 3000",
-		"start": "./build-client && node src/",
+		"install": "./build-client && npm install",
+		"start": "node src/",
 		"mocha": "mocha test/ --recursive"
 	},
 	"dependencies": {
