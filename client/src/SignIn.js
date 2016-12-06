@@ -1,7 +1,7 @@
 import React from 'react';
 import { Panel, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import App from './AppServices';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -32,7 +32,7 @@ class SignIn extends React.Component {
 			'password': this.state.password
 		})
 		.then(result => { 
-			hashHistory.push('/chat');
+			browserHistory.push('/chat');
 		})
 		.catch(error => {
 			console.error('Error authenticating', error);
