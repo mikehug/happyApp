@@ -1,24 +1,24 @@
 version: 0.1
 
 environment_variables:
-  plaintext:
-    NODE_ENV: "production4"
+	plaintext:
+		NODE_ENV: "production"
 
 phases:
-  install:
-    commands:
-      - ./install-client
-  pre_build:
-    commands:
-      - echo Nothing to do in the pre_build phase...
-  build:
-    commands:
-      - echo Build started on `date`
-      - ./build-client
-  post_build:
-    commands:
-      - echo Build completed on `date`
+	install:
+		commands:
+			- install-client
+	pre_build:
+		commands:
+			- echo Nothing to do in the pre_build phase...
+	build:
+		commands:
+			- echo Build started on `date`
+			- build-client
+	post_build:
+		commands:
+			- echo Build completed on `date`
 artifacts:
-  files:
-    - **/*
-  discard-paths: no
+	files:
+		- **/*
+	discard-paths: no
