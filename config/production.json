@@ -1,8 +1,8 @@
 {
-	"host": "happyapp2-dev.eu-west-1.elasticbeanstalk.com",
+	"host": "127.0.0.1",
 	"port": "PORT",
-	"nedb": "../data/",
-	"public": "../client/build/",
+	"nedb": "./data/",
+	"public": "./client/build/",
 	"auth": {
 		"token": {
 			"secret": "ThUp6c4B8yscHAqnLqchNef4MNwGOn1WdqrpV2dKh/u0nrFdQUN9zJ2ya8p3q4YRxvfrn/4KtGzSAb7AFFmhKQ=="
