@@ -1,5 +1,5 @@
 {
-	"host": "happyapp-dev.eu-west-1.elasticbeanstalk.com",
+	"host": "happyapp-dev2.eu-west-1.elasticbeanstalk.com",
 	"port": "PORT",
 	"nedb": "../data/",
 	"public": "../client/build/",
