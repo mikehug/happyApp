@@ -1,6 +1,6 @@
 sudo su
 PATH=$PATH:`ls -td /opt/elasticbeanstalk/node-install/node-* | head -1`/bin
-cd client
+cd /var/app/current/client
 npm install
 npm run build
 cd ..
