@@ -1,16 +1,22 @@
 version: 0.1
 
+eb_codebuild_settings:
+  CodeBuildServiceRole: role-name
+  ComputeType: size
+  Image: image
+  Timeout: minutes
+
 phases:
 	install:
 		commands:
-			- install-client
+			- ./install-client
 	pre_build:
 		commands:
 			- echo Nothing to do in the pre_build phase...
 	build:
 		commands:
 			- echo Build started on `date`
-			- build-client
+			- ./build-client
 	post_build:
 		commands:
 			- echo Build completed on `date`
