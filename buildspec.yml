@@ -6,6 +6,10 @@ eb_codebuild_settings:
   Image: aws/codebuild/eb-nodejs-4.4.6-amazonlinux-64:2.1.3
   Timeout: 7
 
+environment_variables:
+  plaintext:
+    NODE_ENV: "production"
+
 phases:
 	install:
 		commands:
