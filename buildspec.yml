@@ -1,9 +1,8 @@
 version: 0.1
 
 eb_codebuild_settings:
-  CodeBuildServiceRole: aws-elasticbeanstalk-ec2-role
+  CodeBuildServiceRole: aws-elasticbeanstalk-service-role
   ComputeType: t2.micro
-  Image: aws/codebuild/eb-nodejs-4.4.6-amazonlinux-64:2.1.3
   Timeout: 7
 
 environment_variables:
