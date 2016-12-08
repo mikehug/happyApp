@@ -1,6 +1,6 @@
 #check for root
-UID=$(id -u)
-if [ x$UID != x0 ] 
+isu=$(id -u)
+if [ x$isu != x0 ] 
 then
 		#Beware of how you compose the command
 		printf -v cmd_str '%q ' "$0" "$@"
