@@ -20,7 +20,7 @@
 		"jshint": "jshint src/. test/. --config",
 		"dev": "nf start -p 3000",
 		"start": "node src/",
-		"start-aws": "./install-client && node src/",
+		"postinstall": "cd client && npm install && npm run build",
 		"mocha": "mocha test/ --recursive"
 	},
 	"dependencies": {
