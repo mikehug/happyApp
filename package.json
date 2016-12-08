@@ -20,7 +20,7 @@
 		"jshint": "jshint src/. test/. --config",
 		"dev": "nf start -p 3000",
 		"start": "node src/",
-		"prestart": "cd client && npm install && npm run build",
+		"prestart": "./install-client",
 		"mocha": "mocha test/ --recursive"
 	},
 	"dependencies": {
