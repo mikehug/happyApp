@@ -1,7 +1,7 @@
 import React from 'react';
 import { Panel, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import App from './AppServices';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link} from 'react-router';
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -56,7 +56,7 @@ class SignIn extends React.Component {
 						<FormControl type='password' onChange={this.handleOnPasswordChange} placeholder='********'/>
 
 					</FormGroup>
-					<a href='/signup'>Not a member? Sign Up</a>
+					<Link to={'/signup'}>Not a member? Sign Up</Link>
 					<Button className="pull-right" type='submit'>Sign In</Button>
 
 				</form>

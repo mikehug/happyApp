@@ -1,4 +1,3 @@
-// client/routes.js
 import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import App from './App';
@@ -16,6 +15,7 @@ const Routes = (props) => (
 			<Route path="/signup" component={SignUp}/>
 			<Route path="/signin" component={SignIn}/>
 		</Route>
+		
 	</Router>
 );
 
