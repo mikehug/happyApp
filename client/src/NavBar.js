@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import App from './AppServices.js';
-import {hashHistory} from 'react-router';
+import { browserHistory} from 'react-router';
 
 class NavBar extends React.Component {
 	
@@ -15,7 +15,7 @@ class NavBar extends React.Component {
 		if(App.get('user')) {
 			return <Navbar.Collapse>
 							<Nav>
-								<LinkContainer to="/chat">
+								<LinkContainer to={{ pathname: '/chat'}}>
 									<NavItem eventKey={1}>Chat</NavItem>
 								</LinkContainer>
 									<NavItem eventKey={2} href="#">Learn</NavItem>
@@ -30,7 +30,7 @@ class NavBar extends React.Component {
 		else { 
 			return	<Navbar.Collapse>
 								<Nav pullRight>
-										<LinkContainer to="/SignIn">
+										<LinkContainer to={{ pathname: '/signin'}}>
 											<NavItem eventKey={2}>Sign In</NavItem>
 										</LinkContainer>
 								</Nav>
@@ -39,7 +39,7 @@ class NavBar extends React.Component {
 	}
 	
 	signOut(){
-		App.logout().then(()=> hashHistory.push('/signin'));
+		App.logout().then(()=> browserHistory.push('/signin'));
 	}
 	
 	render() {

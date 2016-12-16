@@ -4,6 +4,7 @@ const app = require('./app');
 const port = app.get('port');
 const server = app.listen(port);
 
+/*eslint no-console: 0*/
 console.log(path.parse(__dirname));
 server.on('listening', () =>
 	console.log(`Feathers application started on ${app.get('host')}:${port} and public folder of ${app.get('public')}` )

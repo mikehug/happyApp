@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
 			<Jumbotron >
 				<h3>Chat with Happy Techie wellness bot.</h3>
 
-				<LinkContainer to='/signup'>
+				<LinkContainer to={{ pathname: '/signup'}}>
 					<Button className="pull-right" bsStyle="primary">Sign Up</Button>
 				</LinkContainer>
 			</Jumbotron>

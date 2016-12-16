@@ -1,54 +1,60 @@
 {
-	"name": "happyApp",
-	"description": "HappyTechie App",
-	"version": "0.0.0",
-	"homepage": "",
-	"main": "src/",
-	"keywords": [
-		"feathers"
-	],
-	"license": "MIT",
-	"repository": {},
-	"author": {},
-	"contributors": [],
-	"bugs": {},
-	"engines": {
-		"node": ">= 0.12.0"
-	},
-	"scripts": {
-		"test": "npm run jshint && npm run mocha",
-		"jshint": "jshint src/. test/. --config",
-		"dev": "nf start -p 3000",
-		"start": "node src/",
-		"install": "node install-client.js && npm install",
-		"mocha": "mocha test/ --recursive"
-	},
-	"dependencies": {
-		"apiai": "^3.0.3",
-		"body-parser": "^1.15.2",
-		"compression": "^1.6.2",
-		"cors": "^2.8.1",
-		"feathers": "^2.0.2",
-		"feathers-authentication": "^0.7.11",
-		"feathers-configuration": "^0.3.3",
-		"feathers-errors": "^2.5.0",
-		"feathers-hooks": "^1.6.1",
-		"feathers-nedb": "^2.5.1",
-		"feathers-rest": "^1.5.1",
-		"feathers-socketio": "^1.4.2",
-		"foreman": "^2.0.0",
-		"nedb": "^1.8.0",
-		"passport": "^0.3.2",
-		"passport-facebook": "^2.1.1",
-		"passport-facebook-token": "^3.3.0",
-		"passport-google-oauth20": "^1.0.0",
-		"passport-google-token": "^0.1.2",
-		"serve-favicon": "^2.3.0",
-		"winston": "^2.3.0"
-	},
-	"devDependencies": {
-		"jshint": "^2.9.4",
-		"mocha": "^3.1.2",
-		"request": "^2.78.0"
-	}
+  "name": "happyApp",
+  "description": "HappyTechie App",
+  "version": "0.0.2",
+  "homepage": "",
+  "main": "src/",
+  "keywords": [
+    "feathers"
+  ],
+  "license": "MIT",
+  "repository": {},
+  "author": {},
+  "contributors": [],
+  "bugs": {},
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "scripts": {
+    "test": "npm run jshint && npm run mocha",
+    "jshint": "jshint src/. test/. --config",
+    "dev": "nf start -p 3000",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive"
+  },
+  "dependencies": {
+    "apiai": "^3.0.3",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cors": "^2.8.1",
+    "feathers": "^2.0.2",
+    "feathers-authentication": "^0.7.11",
+    "feathers-configuration": "^0.3.3",
+    "feathers-errors": "^2.5.0",
+    "feathers-hooks": "^1.6.1",
+    "feathers-nedb": "^2.5.1",
+    "feathers-rest": "^1.5.1",
+    "feathers-socketio": "^1.4.2",
+    "foreman": "^2.0.0",
+    "nedb": "^1.8.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-facebook-token": "^3.3.0",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-google-token": "^0.1.2",
+    "serve-favicon": "^2.3.0",
+    "winston": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.12.2",
+    "eslint-config-react-app": "^0.5.0",
+    "eslint-plugin-flowtype": "^2.29.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.8.0",
+    "jshint": "^2.9.4",
+    "mocha": "^3.1.2",
+    "request": "^2.78.0"
+  }
 }

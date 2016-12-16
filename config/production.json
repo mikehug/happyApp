@@ -5,7 +5,7 @@
 	"public": "../client/build/",
 	"auth": {
 		"token": {
-			"secret": "ThUp6c4B8yscHAqnLqchNef4MNwGOn1WdqrpV2dKh/u0nrFdQUN9zJ2ya8p3q4YRxvfrn/4KtGzSAb7AFFmhKQ=="
+			"secret": "FEATHERS_TOKEN"
 		},
 		"local": {},
 		"facebook": {

@@ -1,24 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import Chat from './Chat';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
-import Dashboard from './Dashboard';
 import 'bootstrap/dist/css/bootstrap.css';
 import './bootstrap-paper.css';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
+import Routes from './Routes';
 
 
 ReactDOM.render(
-	<Router history={hashHistory}>
-		<Route path="/" component={App}>
-			{/* add childern of app here*/}
-			<IndexRoute component={Dashboard}/>
-			<Route path="/chat" component={Chat}/>
-			<Route path="/signup" component={SignUp}/>
-			<Route path="/signin" component={SignIn}/>
-		</Route>
-	</Router>
-	, document.getElementById('root')
+	<Routes history={browserHistory}/>, 
+	document.getElementById('root')
 );

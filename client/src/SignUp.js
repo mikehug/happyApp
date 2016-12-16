@@ -1,5 +1,6 @@
 import React from 'react';
 import { Panel, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 class SignUp extends React.Component {
 
@@ -24,7 +25,7 @@ class SignUp extends React.Component {
 
 					</FormGroup>
 
-					<a href='/signin'>Already a member? Sign In</a>
+					<Link to={'/signin'}>Already a member? Sign In</Link>
 
 					<Button className="pull-right" type='submit'>Sign Up</Button>
 
