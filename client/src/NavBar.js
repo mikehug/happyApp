@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import App from './AppServices.js';
-import { browserHistory} from 'react-router';
+import { Link, browserHistory} from 'react-router';
 
 class NavBar extends React.Component {
 	
@@ -46,11 +46,11 @@ class NavBar extends React.Component {
 		return (
 			<Navbar collapseOnSelect>
 				<Navbar.Header>
-						<a href="/">
+						<Link to={'/'}>
 							<Navbar.Brand>
 								<img alt='Happy Techie Logo' src={logo}/>
 							</Navbar.Brand>
-						</a>
+						</Link>
 					<Navbar.Toggle/>
 				</Navbar.Header>
 				{this.displayNavLinks()}
