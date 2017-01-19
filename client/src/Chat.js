@@ -78,7 +78,7 @@ class MessageList extends React.Component {
 			</ListGroupItem>
 		);
 		return 	<Panel>
-							<div ref='scrollable' style={{'height': '50vh', 'overflowY' :'scroll'}}>
+							<div ref='scrollable' style={{'height': '40vh', 'overflowY' :'scroll'}}>
 								<ListGroup>
 									{listItems}
 								</ListGroup>
